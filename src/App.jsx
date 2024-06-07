@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import authservice from './firebase/auth'
+
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const userCredentials = {
+      email: "test@gmail.com",
+      password: "123456"
+    }
+    authservice.createUser(userCredentials);
+    
+  }, [])
 
   return (
     <>
