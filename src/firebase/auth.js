@@ -1,5 +1,5 @@
 import app from "./firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
 export class authService {
     auth = getAuth(app)
@@ -14,6 +14,23 @@ export class authService {
             console.error(err.message);
             console.log(err.code);
         })
+    }
+
+    signIn({email, password}) {
+        signInWithEmailAndPassword(this.auth, email, password)
+            .then((userCredential) => {
+            const user = userCredential.user;
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+        });
+    }
+
+    logOut() {
+        signOut(this.auth)
+        .then(() => console.log("Signed out success"))
+        .catch((err) => console.log("firebase authservice error :: logOut :: ", err))
     }
 }
 

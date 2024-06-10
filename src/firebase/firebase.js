@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app";
 import conf from "../../conf/conf"
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: conf.firebaseApi,
     authDomain: `${conf.firebaseProjectId}.firebaseapp.com`,
-    databaseURL: conf.firebaseDatabaseUrl,
     projectId: conf.firebaseProjectId,
     storageBucket: `${conf.firebaseProjectId}.appspot.com`,
     messagingSenderId: conf.firebaseMessageId,
@@ -13,7 +15,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export default app;
 
+export default app;
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 
 

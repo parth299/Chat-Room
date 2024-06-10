@@ -8,14 +8,14 @@ import authservice from './firebase/auth'
 function App() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    const userCredentials = {
-      email: "test@gmail.com",
-      password: "123456"
-    }
-    authservice.createUser(userCredentials);
+  // useEffect(() => {
+  //   const userCredentials = {
+  //     email: "test@gmail.com",
+  //     password: "123456"
+  //   }
+  //   authservice.createUser(userCredentials);
     
-  }, [])
+  // }, [])
 
   return (
     <>
