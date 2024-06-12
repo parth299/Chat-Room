@@ -4,16 +4,8 @@ import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPas
 export class authService {
     auth = getAuth(app)
 
-    createUser({email, password}) {
-        createUserWithEmailAndPassword(this.auth, email, password)
-        .then((UserCredential) => {
-            const user = UserCredential.user
-            console.log(UserCredential)
-        })
-        .catch((err) => {
-            console.error(err.message);
-            console.log(err.code);
-        })
+    async createUser({email, password}) {
+        return await createUserWithEmailAndPassword(this.auth, email, password)
     }
 
     signIn({email, password}) {
